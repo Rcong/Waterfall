@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>waterfall demo</title>
+    <link rel="stylesheet" href="lib/waterfall.css">
+  </head>
+  <body>
+    <div id="waterfall-wrap" class="waterfall"></div>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="lib/waterfall.min.js"></script>
+    <script type="text/javascript">
+
+    var curPage = 1,
+		perPageCount = 20;
+
+	function callData(callback) {
+        $.ajax({
+    		url: 'http://platform.sina.com.cn/slide/album_tech',
+    		dataType: 'jsonp',   //这里使用了新浪新闻的 jsonp 接口，大家可以直接看数据， 如： http://platform.sina.com.cn/slide/album_tech?jsoncallback=func&app_key=1271687855&num=3&page=4
+    		jsonp:"jsoncallback",
+    		data: {
+    			app_key: '1271687855',
+    			num: perPageCount,
+    			page: curPage
+    		}
+    	}).done(function(ret){
+    		if(ret && ret.status && ret.status.code === "0"){
+                callback(ret.data);
+                curPage++;
+    		}else{
+    			console.log('get error data');
+    		}
+    	});
+	}
+
+    function getRandomInt(min, max) {
+      return Math.floor(Math.random() * (max - min + 0.99)) + min;
+    }
+
+    function getData(){
+        var data = []
+            lastRandomInt = 0,
+            randomInt = 0;
+        for (var i = 0; i < 10; i++) {
+            randomInt = getRandomInt(1, 9);
+            while (randomInt === lastRandomInt) {
+                randomInt = getRandomInt(1, 9);
+            }
+            lastRandomInt = randomInt;
+            data.push({
+                "img": "http://7xrunf.com1.z0.glb.clouddn.com/rcong-pic" + randomInt + ".jpeg",
+                "description": "我是二次元少年中二未毕业"
+            });
+        }
+        return data;
+    }
+
+    waterfall.init($('#waterfall-wrap'));
+    //mock数据
+    waterfall.render({
+        data: getData(),
+        content: 'img',
+        desc: 'description'
+    });
+    //真实数据
+    // callData(function(data){
+    //     waterfall.render({
+    //         data: data,
+    //         content: 'img_url',
+    //         desc: 'name'
+    //     });
+    // });
+    waterfall.touchBottom(function () {
+        //mock数据
+        waterfall.render({
+            data: getData(),
+            content: 'img',
+            desc: 'description'
+        });
+        //真实数据
+        // callData(function(data){
+        //     waterfall.render({
+        //         data: data,
+        //         content: 'img_url',
+        //         desc: 'name'
+        //     });
+        // });
+    });
+
+    </script>
+  </body>
+</html>
