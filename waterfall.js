@@ -79,6 +79,7 @@ var waterfall = (function($) {
             }
         },
         layout: function($items) {
+            //如果没有$items传入则是页面所有item全部重新布局
             if (!$items) {
                 $items = $('.item');
                 colHeight = [];
