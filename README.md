@@ -99,5 +99,5 @@ waterfall.touchBottom(callback)
 
 ## gulp构建部分
 
-＋ 使用了gulp-rename、gulp-uglify将js压缩并重新以*.min.js的命名方式存放在lib文件夹下
-＋ 样式部分使用less编写, 之后使用了gulp-autoprefixer、gulp-less、gulp-minify-css等, 将样式添加前缀, 编译成css后并压缩存放在lib文件夹下
++ 使用了gulp-rename、gulp-uglify将js压缩并重新以*.min.js的命名方式存放在lib文件夹下
++ 样式部分使用less编写, 之后使用了gulp-autoprefixer、gulp-less、gulp-minify-css等, 将样式添加前缀, 编译成css后并压缩存放在lib文件夹下
