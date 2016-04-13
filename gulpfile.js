@@ -5,6 +5,15 @@ var less = require('gulp-less');
 var minifyCSS = require('gulp-minify-css');
 var autoprefixer = require('gulp-autoprefixer');
 
+gulp.task('less', function () {
+  return gulp.src('./waterfall.less')
+    .pipe(autoprefixer())
+    .pipe(less())
+    .pipe(minifyCSS())
+    .pipe(rename('./lib/waterfall.min.css'))
+    .pipe(gulp.dest('./'));
+});
+
 gulp.task('compress', function () {
     return gulp.src('./waterfall.js')
         .pipe(uglify())
@@ -12,10 +21,4 @@ gulp.task('compress', function () {
         .pipe(gulp.dest('./'))
 });
 
-gulp.task('less', function () {
-  return gulp.src('./waterfall.less')
-    .pipe(autoprefixer())
-    .pipe(less())
-    .pipe(minifyCSS())
-    .pipe(gulp.dest('./lib'));
-});
+gulp.task('run', ['less', 'compress']);

@@ -1,5 +1,13 @@
-# 瀑布流学习笔记
-[传送门 戳这里！！！](http://book.jirengu.com/Rcong/my-practical-code/waterfall/waterfal.html)
+# 瀑布流原理Demo
+
++ 依赖jQuery
+
+```
+$ npm install #安装依赖
+$ gulp run #生成waterfal.min.js和waterfal.min.css文件
+```
+
+> [传送门 戳这里！！！](http://book.jirengu.com/Rcong/my-practical-code/waterfall/waterfal.html)
 
 
 ## 瀑布流实现原理
