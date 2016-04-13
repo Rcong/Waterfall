@@ -14,13 +14,23 @@ $ gulp run #生成waterfall.min.js和waterfall.min.css文件
 ```
 <div id="wrap" class="waterfall"></div>
 ```
--> 调用```waterfall.init()```并传入容器节点的jQuery对象```$('#wrap')```.
--> 调用```waterfall.render()```传入数据并设置相应参数, 如
+-> 调用```waterfall.init($node)```并传入容器节点的jQuery对象```$('#wrap')```.
+-> 调用```waterfall.render(options)```传入数据并设置相应参数, 如
 ```
 waterfall.render({
     data: myData,
     content: 'img_url', //img_url为myData中img的url
     desc: 'description' //description为myData中对应图片的描述
+});
+```
+-> 调用```waterfall.touchBottom(callback)```传入请求数据的回调, 当滚动到瀑布流容器触底时会触发, 如
+```
+waterfall.touchBottom(function() {
+    waterfall.render({
+        data: myData,
+        content: 'img_url', //img_url为myData中img的url
+        desc: 'description' //description为myData中对应图片的描述
+    });
 });
 ```
 
