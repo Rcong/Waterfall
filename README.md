@@ -1,7 +1,7 @@
 # 瀑布流原理Demo
 
-+ 依赖jQuery
-
+## 如何使用
+下载后
 ```
 $ npm install #安装依赖
 $ gulp run #生成waterfal.min.js和waterfal.min.css文件
