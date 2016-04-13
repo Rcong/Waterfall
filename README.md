@@ -1,13 +1,28 @@
 # 瀑布流原理Demo
 
+> [传送门 戳这里！！！](http://book.jirengu.com/Rcong/my-practical-code/waterfall/waterfal.html)
+
 ## 如何使用
 下载后
 ```
 $ npm install #安装依赖
-$ gulp run #生成waterfal.min.js和waterfal.min.css文件
+$ gulp run #生成waterfall.min.js和waterfall.min.css文件
 ```
 
-> [传送门 戳这里！！！](http://book.jirengu.com/Rcong/my-practical-code/waterfall/waterfal.html)
+-> 页面引入jQuery、waterfall.min.js以及waterfall.min.css
+-> body标签中设置一个容器节点div, 并设置class为waterfall, 如
+```
+<div id="wrap" class="waterfall"></div>
+```
+-> 调用```waterfall.init()```并传入容器节点的jQuery对象```$('#wrap')```.
+-> 调用```waterfall.render()```传入数据并设置相应参数, 如
+```
+waterfall.render({
+    data: myData,
+    content: 'img_url', //img_url为myData中img的url
+    desc: 'description' //description为myData中对应图片的描述
+});
+```
 
 
 ## 瀑布流实现原理
